@@ -1,7 +1,7 @@
 import Stripe from 'stripe';
 
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2025-05-28.basil',
+  apiVersion: '2026-09-30.endive',
   typescript: true,
 });
 
@@ -19,7 +19,7 @@ export const getStripeSession = async ({
     const session = await stripe.checkout.sessions.create({
         customer: customerId,
         mode: "subscription",
-        payment_method_types: ["card"],
+        allowed_payment_method_types: ["card"],
         billing_address_collection: "auto",
         line_items: [
             {
